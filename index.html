@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#287c68">
+  <meta name="description" content="Khotwa - خطوة: أنشطة إرشادية لمرافقة أولياء الأطفال ذوي اضطراب النمو التناسقي TDC">
+  <title>Khotwa | خطوة</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <div id="splashScreen" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#287c68;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;transition:opacity 0.6s ease;animation:fadeOutSplash 0.5s ease 2.0s forwards;">
+    <div style="width:90px;height:90px;border-radius:28px;background:#fff;color:#287c68;font-size:50px;font-weight:800;display:grid;place-items:center;box-shadow:0 15px 35px rgba(0,0,0,0.25);">خ</div>
+    <h1 style="margin:18px 0 6px;font-size:30px;font-weight:800;font-family:'Cairo',sans-serif;">Khotwa | خطوة</h1>
+    <p style="margin:0 0 14px;opacity:0.9;font-size:14px;font-family:'Cairo',sans-serif;">دليل أخصائي النفس الحركي والأولياء</p>
+    <div style="font-size:12px;opacity:0.8;letter-spacing:1px;font-family:'Cairo',sans-serif;border-top:1px solid rgba(255,255,255,0.2);padding-top:8px;">By Salim & Oussama</div>
+  </div>
+  <style>
+    @keyframes fadeOutSplash {
+      0% { opacity: 1; visibility: visible; }
+      100% { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
+  </style>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Khotwa home">
+      <span class="brand-mark">خ</span>
+      <span><strong>Khotwa | خطوة</strong><small id="brandSub">كل خطوة تصنع فرقاً</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="profile-pill" id="profileBtn" aria-label="Child profile">
+        <span class="profile-dot">👤</span>
+        <span id="profileBtnLabel">ملف الطفل</span>
+      </button>
+      <button class="icon-btn" id="langBtn" aria-label="Change language">FR</button>
+      <button class="icon-btn" id="helpBtn" aria-label="Information">؟</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow" id="heroEyebrow">دليل مبسّط للأولياء</span>
+        <h1 id="heroTitle">خطوات صغيرة، تطوّر أكبر</h1>
+        <p id="heroText">أنشطة منزلية إرشادية لدعم التنسيق الحركي لدى الطفل ذي TDC، بالتدرّج وبدون ضغط.</p>
+        <div class="hero-cta-row">
+          <a class="primary-btn" href="#activities" id="exploreBtn">اكتشف الأنشطة <span>←</span></a>
+          <button class="secondary-btn hero-profile-btn" id="heroProfileBtn">＋ تسجيل بيانات الطفل</button>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div><div class="path"></div>
+        <span class="step s1">●</span><span class="step s2">●</span><span class="step s3">●</span>
+        <div class="hero-card"><span>✦</span><b>TDC</b><small>Coordination</small></div>
+      </div>
+    </section>
+
+    <section class="child-summary-bar" id="childSummaryBar" hidden>
+      <div class="child-summary-info">
+        <div class="child-avatar" id="childAvatar">ط</div>
+        <div>
+          <strong id="summaryChildName"></strong>
+          <small id="summaryChildDetails"></small>
+        </div>
+      </div>
+      <button class="secondary-btn small-btn" id="editChildSummaryBtn">تعديل الملف</button>
+    </section>
+
+    <section class="notice">
+      <span class="notice-icon">ⓘ</span>
+      <p id="noticeText"><strong>ما هو TDC؟</strong> اضطراب النمو التناسقي قد يجعل تعلّم وتنفيذ بعض الحركات اليومية أصعب. هذا التطبيق للتوعية والأنشطة العامة، ولا يعوّض تقييم المختص.</p>
+    </section>
+
+    <section class="section-head" id="activities">
+      <div><span class="eyebrow" id="activitiesEyebrow">تعلّموا بالممارسة</span><h2 id="activitiesTitle">الأنشطة والتمارين</h2></div>
+      <span class="count" id="activityCount">6 أنشطة</span>
+    </section>
+    <div class="filters" role="group" aria-label="Activity filters">
+      <button class="filter active" data-filter="all" id="filterAll">الكل</button>
+      <button class="filter" data-filter="gross" id="filterGross">التوازن والحركة</button>
+      <button class="filter" data-filter="fine" id="filterFine">المهارات الدقيقة</button>
+      <button class="filter" data-filter="visual" id="filterVisual">التنسيق البصري</button>
+      <button class="filter" data-filter="table" id="filterTable">ألعاب الطاولة الاقتصادية</button>
+    </div>
+    <section class="activity-grid" id="activityGrid"></section>
+
+    <section class="section-head follow-head">
+      <div><span class="eyebrow" id="followEyebrow">مرافقة الطفل</span><h2 id="followTitle">متابعة الأنشطة</h2></div>
+    </section>
+    <section class="follow-grid">
+      <article class="follow-card">
+        <div class="follow-icon camera">▣</div><h3 id="archiveTitle">أرشيف الصور والفيديوهات</h3>
+        <p id="archiveText">احتفظوا بتسجيلات الأنشطة على هذا الجهاز فقط.</p>
+        <button class="secondary-btn" id="openArchive">فتح الأرشيف</button>
+      </article>
+      <article class="follow-card">
+        <div class="follow-icon tip">✦</div><h3 id="tipsTitle">نصائح للأولياء</h3>
+        <p id="tipsText">التشجيع، التدرّج، وتكييف النشاط مع قدرات الطفل.</p>
+        <button class="secondary-btn" id="tipsBtn">قراءة النصائح</button>
+      </article>
+    </section>
+
+    <section class="about-card">
+      <div class="about-symbol">K</div>
+      <div><h3 id="aboutTitle">عن تطبيق خطوة</h3><p id="aboutText">مبادرة توعوية لمرافقة أولياء الأطفال ذوي اضطراب النمو التناسقي (TDC).</p>
+      <small>Salim Bezzaou · Oussama Mansouri</small></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="#" class="nav-item selected"><span>⌂</span><small id="navHome">الرئيسية</small></a>
+    <a href="#activities" class="nav-item"><span>✣</span><small id="navActivities">الأنشطة</small></a>
+    <button class="nav-item" id="navProfile"><span>👤</span><small id="navProfileText">الطفل</small></button>
+    <button class="nav-item" id="navArchive"><span>▣</span><small id="navRecords">الأرشيف</small></button>
+    <button class="nav-item" id="navAbout"><span>ⓘ</span><small id="navAboutText">حول</small></button>
+  </nav>
+
+  <dialog id="profileDialog" class="modal">
+    <div class="modal-head">
+      <div><span class="eyebrow" id="profileEyebrow">المتابعة الشخصية</span><h2 id="profileHeading">ملف الطفل</h2></div>
+      <button class="close-btn" data-close="profileDialog">×</button>
+    </div>
+    <p class="privacy-note" id="profilePrivacyNote">تُحفظ بيانات الطفل محلياً على هذا الجهاز فقط لتخصيص التجربة، ولا تُرسل لأي خادم خارجي.</p>
+    <form id="childForm" class="child-form">
+      <div class="form-group">
+        <label for="childNameInput" id="childNameLabel">اسم الطفل</label>
+        <input type="text" id="childNameInput" required placeholder="مثال: آدم">
+      </div>
+      <div class="form-group">
+        <label for="childAgeInput" id="childAgeLabel">العمر (بالسنوات)</label>
+        <input type="number" id="childAgeInput" min="2" max="18" step="0.5" required placeholder="مثال: 6">
+      </div>
+      <div class="form-group">
+        <label for="childIssueSelect" id="childIssueLabel">المشكل أو الصعوبة الأساسية</label>
+        <select id="childIssueSelect" required>
+          <option value="gross" id="optGross">صعوبة في التوازن والحركة الكبرى (المشي، القفز، الجري)</option>
+          <option value="fine" id="optFine">صعوبة في المهارات الدقيقة (مسك القلم، الأزرار، الخيط)</option>
+          <option value="visual" id="optVisual">صعوبة في التنسيق البصري الحركي (التركيب، رمي والتقاط الكرة)</option>
+          <option value="mixed" id="optMixed">صعوبات مختلطة في التنسيق الحركي العام</option>
+          <option value="other" id="optOther">أخرى (تحديد مخصص)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="childNotesInput" id="childNotesLabel">وصف المشكل أو ملاحظات إضافية</label>
+        <textarea id="childNotesInput" rows="3" placeholder="اكتب تفاصيل المشكل الذي يعاني منه الطفل..."></textarea>
+      </div>
+      <div class="detail-actions">
+        <button type="submit" class="primary-btn" id="saveChildBtn">حفظ البيانات</button>
+        <button type="button" class="delete-media" id="deleteChildBtn" hidden>حذف الملف</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="activityDialog" class="modal">
+    <div class="modal-head"><div><span class="eyebrow" id="modalEyebrow">نشاط حركي</span><h2 id="modalTitle"></h2></div><button class="close-btn" data-close="activityDialog">×</button></div>
+    <div id="modalBody"></div>
+  </dialog>
+
+  <dialog id="archiveDialog" class="modal">
+    <div class="modal-head"><div><span class="eyebrow" id="archiveEyebrow">المتابعة</span><h2 id="archiveHeading">الأرشيف</h2></div><button class="close-btn" data-close="archiveDialog">×</button></div>
+    <p class="privacy-note" id="privacyNote">الملفات محفوظة محلياً على هذا الجهاز ولا تُرفع إلى خادم. لا تشاركوا صور الطفل دون موافقة وليّه.</p>
+    <label class="upload-label" for="mediaInput" id="uploadLabel">＋ إضافة صورة أو فيديو للنشاط</label>
+    <input id="mediaInput" type="file" accept="image/*,video/*" capture="environment" hidden>
+    <div id="archiveList" class="archive-list"></div>
+  </dialog>
+
+  <dialog id="infoDialog" class="modal">
+    <div class="modal-head"><h2 id="infoTitle">معلومات مهمة</h2><button class="close-btn" data-close="infoDialog">×</button></div>
+    <div id="infoBody"></div>
+  </dialog>
+
+  <footer><span>© Khotwa | خطوة</span><span id="footerText">محتوى توعوي وليس تشخيصاً أو علاجاً بديلاً.</span></footer>
+  <script src="./app.js"></script>
+</body>
+</html>

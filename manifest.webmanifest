@@ -1,0 +1,43 @@
+{
+  "id": "./",
+  "name": "Khotwa - خطوة",
+  "short_name": "Khotwa",
+  "description": "أنشطة إرشادية لأولياء الأطفال ذوي اضطراب النمو التناسقي TDC",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "background_color": "#f7faf8",
+  "theme_color": "#287c68",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": [
+    "education",
+    "health"
+  ],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
